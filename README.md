@@ -4,18 +4,17 @@
 [![React](https://img.shields.io/badge/React-18+-61dafb.svg)](https://reactjs.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0+-38bdf8.svg)](https://tailwindcss.com/)
 
-<img width="2774" height="1740" alt="AuroraquaUI" src="https://github.com/user-attachments/assets/11190e74-2d21-4207-8f60-a5d65f3c8344" />
-
-Navbar & Animation show:
-https://github.com/user-attachments/assets/68a54d14-a933-42b0-8316-c02fdda1a3b8
-
-<img width="2774" height="1740" alt="about-page" src="https://github.com/user-attachments/assets/7ac67e27-67d3-4bb1-8a63-792f86024e35" />
-<img width="2774" height="1740" alt="settings-page" src="https://github.com/user-attachments/assets/d7875aa0-9aba-4e9a-851a-a034c2c6bfc7" />
-
 「Aurorάqua」 a web UI template inspired by Apple LiquidGlass Design and Iceland(Ísland) Aurora, featuring a glassmorphism design and soft aurora gradients. Highly suitable for dashboards, control panels, and streaming apps. Built with React & Tailwind. Mozilla Public License 2.0, friendly for commercial use.
 ⚠️This serves only to showcase my personal UI preferences; most features have not been developed yet, and remains far from complete currently.
+
 「Aurorάqua」是受 Apple LiquidGlass 設計風格和冰島極光啟發的 Web UI 模板，採用玻璃擬態設計與柔和的極光漸變效果。非常適合於儀表板、控制面板及串流應用，基於 React 和 Tailwind 構建。採用 Mozilla Public License 2.0 協議，支援商業用途。
 ⚠️目前僅供個人UI喜好展示，大部分功能仍未開發，仍很不完善。
+
+<img width="2774" height="1740" alt="AuroraquaUI" src="https://github.com/user-attachments/assets/11190e74-2d21-4207-8f60-a5d65f3c8344" />
+Navbar & Animation show:
+<video src="https://github.com/user-attachments/assets/68a54d14-a933-42b0-8316-c02fdda1a3b8" width="100%" controls="controls"></video>
+<img width="2774" height="1740" alt="about-page" src="https://github.com/user-attachments/assets/7ac67e27-67d3-4bb1-8a63-792f86024e35" />
+<img width="2774" height="1740" alt="settings-page" src="https://github.com/user-attachments/assets/d7875aa0-9aba-4e9a-851a-a034c2c6bfc7" />
 
 ## 🎨 Visual & Design Features
 * **Dynamic Navbar**: Graceful animated Navbar that can show/hide Sidebar.
