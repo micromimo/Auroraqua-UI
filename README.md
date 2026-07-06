@@ -4,7 +4,7 @@
 [![React](https://img.shields.io/badge/React-18+-61dafb.svg)](https://reactjs.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0+-38bdf8.svg)](https://tailwindcss.com/)
 
-<img width="2776" height="1740" alt="AuroraquaUI" src="https://github.com/user-attachments/assets/286e6b6c-3ea2-4765-b3f1-1465c05dabb4" />
+<img width="2774" height="1740" alt="AuroraquaUI" src="https://github.com/user-attachments/assets/11190e74-2d21-4207-8f60-a5d65f3c8344" />
 
 Navbar & Animation show:
 https://github.com/user-attachments/assets/68a54d14-a933-42b0-8316-c02fdda1a3b8
