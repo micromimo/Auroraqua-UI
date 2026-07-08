@@ -8,11 +8,13 @@
 For Windows Users, please Install the Monaco and PingFang-SC fonts to attain the suspected experience.<br />
 ⚠️This serves only to showcase my personal UI preferences; most features have not been developed yet, and remains far from complete currently.<br />
 Tauri app versions for macOS and Windows are provided in the release.<br />
+However, it is recommended to run `npm install` and `npm run dev` in the terminal and access the application via a browser (tested in Firefox).
 
 「Aurorάqua」是受 Apple LiquidGlass 設計風格和冰島極光啟發的 Web UI 模板，採用玻璃擬態設計與柔和的極光漸變效果。遵循元件化、可複用性、響應式佈局、單頁路由，助您快速建立自訂介面。基於 React 和 Tailwind 構建。採用 Mozilla Public License 2.0 協議，支援商業用途。<br />
 對於Windows用戶，由於字體並非系統預先安裝，建議安裝Monaco字體和PingFang SC字體以獲得預期體驗。<br />
 ⚠️目前僅供個人UI喜好展示，大部分功能仍不完善。<br />
 Release中提供了MacOS和Windows版本的Tauri App。<br />
+但更建議在終端機中執行npm install和npm run dev以使用瀏覽器訪問（測試環境：FireFox）
 
 🔴对于简体中文用户，demo中图片视频素材使用了来自YouTube和BlaueSky等网站的链接，请自觉使用魔法以正常加载资源。
 
