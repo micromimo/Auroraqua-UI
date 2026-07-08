@@ -73,7 +73,53 @@ export default function Init() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+          <Link to="/case3" className="group">
+            <div className="liquid-glass rounded-2xl p-6 h-48 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(236,72,153,0.3)]">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center"
+                  style={{ background: 'linear-gradient(135deg, #7b61ff, #a78bfa)' }}>
+                  <span className="text-2xl">🎨</span>
+                </div>
+                <div className="text-left">
+                  <h2 className="text-lg font-bold text-slate-700 group-hover:neon-text-pink transition-all">
+                    Case 3
+                  </h2>
+                  <p className="text-xs text-slate-500">UI Showcase</p>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <p className="text-xs text-slate-500">Multi-scene interface demo</p>
+                <div className="text-pink-600 group-hover:translate-x-1 transition-transform">
+                  →
+                </div>
+              </div>
+            </div>
+          </Link>
+
+                    <Link to="/case2" className="group">
+            <div className="liquid-glass rounded-2xl p-6 h-48 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(236,72,153,0.3)]">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center"
+                  style={{ background: 'linear-gradient(135deg, #ff6b9d, #ec4899)' }}>
+                  <span className="text-2xl">🖼️</span>
+                </div>
+                <div className="text-left">
+                  <h2 className="text-lg font-bold text-slate-700 group-hover:neon-text-pink transition-all">
+                    Case 2
+                  </h2>
+                  <p className="text-xs text-slate-500">Image Matting Agent</p>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <p className="text-xs text-slate-500">Object localization</p>
+                <div className="text-pink-600 group-hover:translate-x-1 transition-transform">
+                  →
+                </div>
+              </div>
+            </div>
+          </Link>
+
           <Link to="/case1" className="group">
             <div className="liquid-glass rounded-2xl p-6 h-48 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(236,72,153,0.3)]">
               <div className="flex items-center gap-4">
@@ -89,30 +135,7 @@ export default function Init() {
                 </div>
               </div>
               <div className="flex items-center justify-between">
-                <p className="text-xs text-slate-500">Real-time video processing and monitoring</p>
-                <div className="text-pink-600 group-hover:translate-x-1 transition-transform">
-                  →
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          <Link to="/case2" className="group">
-            <div className="liquid-glass rounded-2xl p-6 h-48 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(236,72,153,0.3)]">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center"
-                  style={{ background: 'linear-gradient(135deg, #ff6b9d, #ec4899)' }}>
-                  <span className="text-2xl">🖼️</span>
-                </div>
-                <div className="text-left">
-                  <h2 className="text-lg font-bold text-slate-700 group-hover:neon-text-pink transition-all">
-                    Case 2
-                  </h2>
-                  <p className="text-xs text-slate-500">Image Matting Agent</p>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <p className="text-xs text-slate-500">Object localization and matting</p>
+                <p className="text-xs text-slate-500">Real-time video processing</p>
                 <div className="text-pink-600 group-hover:translate-x-1 transition-transform">
                   →
                 </div>

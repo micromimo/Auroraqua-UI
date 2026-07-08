@@ -242,11 +242,11 @@ export default function Case2() {
             showImage={!isFinished}
           />
           <Link 
-            to="/case1" 
+            to="/init" 
             className="bottom-2 right-2 glass-button glass-button-no-scale liquid-glass-glow hover:text-pink-700 font-semibold"
             style={{ position: 'absolute', width: 'fit-content' }}
           >
-            <span className="relative z-10">case1</span>
+            <span className="relative z-10">init</span>
           </Link>
         </main>
       </div>

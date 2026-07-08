@@ -1,6 +1,7 @@
+import { useMemo } from 'react';
 import GlassCard from './GlassCard';
 
-export default function MetricsChart({ history = [], totalSteps = 30 }) {
+function MetricsChart({ history = [], totalSteps = 30 }) {
   const maxSteps = totalSteps;
   const data = history.length > 0 ? history : [];
 
@@ -8,34 +9,29 @@ export default function MetricsChart({ history = [], totalSteps = 30 }) {
   const height = 100;
   const padding = 8;
 
-  const points = data.map((d, i) => {
-    const x =
-      padding +
-      (i / Math.max(1, maxSteps - 1)) * (width - padding * 2);
-    const y =
-      height -
-      padding -
-      d.confidence * (height - padding * 2);
-    return { x, y, d };
-  });
+  const { points, pathD, areaD, stepLabels } = useMemo(() => {
+    const pts = data.map((d, i) => {
+      const x = padding + (i / Math.max(1, maxSteps - 1)) * (width - padding * 2);
+      const y = height - padding - d.confidence * (height - padding * 2);
+      return { x, y, d };
+    });
 
-  const pathD =
-    points.length > 0
-      ? points
-          .map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`)
-          .join(" ")
+    const path = pts.length > 0
+      ? pts.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ")
       : "";
 
-  const areaD =
-    points.length > 0
-      ? `${pathD} L ${points[points.length - 1].x.toFixed(1)} ${height - padding} L ${points[0].x.toFixed(1)} ${height - padding} Z`
+    const area = pts.length > 0
+      ? `${path} L ${pts[pts.length - 1].x.toFixed(1)} ${height - padding} L ${pts[0].x.toFixed(1)} ${height - padding} Z`
       : "";
 
-  const stepLabels = [];
-  const labelCount = 7;
-  for (let i = 0; i < labelCount; i++) {
-    stepLabels.push(Math.round((i * (maxSteps - 1)) / (labelCount - 1)));
-  }
+    const labels = [];
+    const labelCount = 7;
+    for (let i = 0; i < labelCount; i++) {
+      labels.push(Math.round((i * (maxSteps - 1)) / (labelCount - 1)));
+    }
+
+    return { points: pts, pathD: path, areaD: area, stepLabels: labels };
+  }, [data, maxSteps, width, height, padding]);
 
   return (
     <GlassCard className="flex flex-col gap-4">
@@ -137,3 +133,5 @@ export default function MetricsChart({ history = [], totalSteps = 30 }) {
     </GlassCard>
   );
 }
+
+export default MetricsChart;

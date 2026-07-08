@@ -1,5 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import GlassCard from './GlassCard';
+
+const debounce = (fn, delay) => {
+  let timer = null;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), delay);
+  };
+};
 
 export default function ImageCanvas({
   imagePath,
@@ -13,6 +21,7 @@ export default function ImageCanvas({
   const imgElRef = useRef(null);
   const overlayRef = useRef(null);
   const maskCanvasRef = useRef(null);
+  const maskImgRef = useRef(null);
   const [imgUrl, setImgUrl] = useState(null);
   const [imgSize, setImgSize] = useState({ w: 0, h: 0 });
   const [wrapperSize, setWrapperSize] = useState({ w: 0, h: 0 });
@@ -40,32 +49,40 @@ export default function ImageCanvas({
     setImgUrl(imagePath);
   }, [imagePath]);
 
-  useEffect(() => {
-    const update = () => {
+  const debouncedUpdate = useMemo(() => {
+    return debounce(() => {
       if (wrapperRef.current) {
         const r = wrapperRef.current.getBoundingClientRect();
-        setWrapperSize({ w: Math.floor(r.width), h: Math.floor(r.height) });
+        const newW = Math.floor(r.width);
+        const newH = Math.floor(r.height);
+        if (newW !== wrapperSize.w || newH !== wrapperSize.h) {
+          setWrapperSize({ w: newW, h: newH });
+        }
       }
-    };
+    }, 100);
+  }, [wrapperSize.w, wrapperSize.h]);
+
+  useEffect(() => {
+    const update = () => debouncedUpdate();
     update();
     if (wrapperRef.current) {
       const obs = new ResizeObserver(update);
       obs.observe(wrapperRef.current);
       return () => obs.disconnect();
     }
-  }, []);
+  }, [debouncedUpdate]);
 
-  const handleImgLoad = (e) => {
+  const handleImgLoad = useCallback((e) => {
     const el = e.currentTarget;
     setImgSize({ w: el.naturalWidth, h: el.naturalHeight });
     setError(null);
-  };
+  }, []);
 
-  const handleImgError = () => {
+  const handleImgError = useCallback(() => {
     setError("无法加载图像，请检查文件格式或路径");
-  };
+  }, []);
 
-  useEffect(() => {
+  const renderOverlay = useCallback((shouldRender) => {
     const overlay = overlayRef.current;
     const maskCanvas = maskCanvasRef.current;
     if (!overlay || !maskCanvas) return;
@@ -85,30 +102,38 @@ export default function ImageCanvas({
     const offsetY = (wrapperSize.h - drawH) / 2;
 
     const dpr = window.devicePixelRatio || 1;
-    for (const c of [overlay, maskCanvas]) {
-      c.width = wrapperSize.w * dpr;
-      c.height = wrapperSize.h * dpr;
-      c.style.width = `${wrapperSize.w}px`;
-      c.style.height = `${wrapperSize.h}px`;
-      const ctx = c.getContext("2d");
-      if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
 
+    const overlayCtx = overlay.getContext("2d");
     const maskCtx = maskCanvas.getContext("2d");
-    if (maskCtx) {
-      maskCtx.clearRect(0, 0, wrapperSize.w, wrapperSize.h);
-      if (maskBase64) {
-        const maskImg = new Image();
-        maskImg.onload = () => {
-          maskCtx.drawImage(maskImg, offsetX, offsetY, drawW, drawH);
-        };
-        maskImg.src = `data:image/png;base64,${maskBase64}`;
-      }
+
+    if (!overlayCtx || !maskCtx) return;
+
+    if (shouldRender) {
+      overlay.width = wrapperSize.w * dpr;
+      overlay.height = wrapperSize.h * dpr;
+      overlay.style.width = `${wrapperSize.w}px`;
+      overlay.style.height = `${wrapperSize.h}px`;
+      overlayCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      maskCanvas.width = wrapperSize.w * dpr;
+      maskCanvas.height = wrapperSize.h * dpr;
+      maskCanvas.style.width = `${wrapperSize.w}px`;
+      maskCanvas.style.height = `${wrapperSize.h}px`;
+      maskCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
-    const ctx = overlay.getContext("2d");
-    if (!ctx) return;
-    ctx.clearRect(0, 0, wrapperSize.w, wrapperSize.h);
+    maskCtx.clearRect(0, 0, wrapperSize.w, wrapperSize.h);
+    if (maskBase64) {
+      if (!maskImgRef.current) {
+        maskImgRef.current = new Image();
+      }
+      maskImgRef.current.onload = () => {
+        maskCtx.drawImage(maskImgRef.current, offsetX, offsetY, drawW, drawH);
+      };
+      maskImgRef.current.src = `data:image/png;base64,${maskBase64}`;
+    }
+
+    overlayCtx.clearRect(0, 0, wrapperSize.w, wrapperSize.h);
 
     if (bbox && !isFinished) {
       const scale = drawW / imgSize.w;
@@ -120,35 +145,45 @@ export default function ImageCanvas({
       const isZoom = (action || "").toLowerCase().includes("zoom");
       const color = isZoom ? "#ec4899" : "#a78bfa";
 
-      ctx.save();
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 3;
-      ctx.shadowColor = color;
-      ctx.shadowBlur = 12;
-      ctx.strokeRect(bx, by, bw, bh);
-      ctx.fillStyle = `${color}22`;
-      ctx.fillRect(bx, by, bw, bh);
+      overlayCtx.save();
+      overlayCtx.strokeStyle = color;
+      overlayCtx.lineWidth = 3;
+      overlayCtx.shadowColor = color;
+      overlayCtx.shadowBlur = 12;
+      overlayCtx.strokeRect(bx, by, bw, bh);
+      overlayCtx.fillStyle = `${color}22`;
+      overlayCtx.fillRect(bx, by, bw, bh);
 
       const cornerLen = Math.min(16, Math.min(bw, bh) * 0.2);
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.moveTo(bx, by + cornerLen);
-      ctx.lineTo(bx, by);
-      ctx.lineTo(bx + cornerLen, by);
-      ctx.moveTo(bx + bw - cornerLen, by);
-      ctx.lineTo(bx + bw, by);
-      ctx.lineTo(bx + bw, by + cornerLen);
-      ctx.moveTo(bx + bw, by + bh - cornerLen);
-      ctx.lineTo(bx + bw, by + bh);
-      ctx.lineTo(bx + bw - cornerLen, by + bh);
-      ctx.moveTo(bx + cornerLen, by + bh);
-      ctx.lineTo(bx, by + bh);
-      ctx.lineTo(bx, by + bh - cornerLen);
-      ctx.stroke();
-      ctx.restore();
+      overlayCtx.strokeStyle = color;
+      overlayCtx.lineWidth = 4;
+      overlayCtx.beginPath();
+      overlayCtx.moveTo(bx, by + cornerLen);
+      overlayCtx.lineTo(bx, by);
+      overlayCtx.lineTo(bx + cornerLen, by);
+      overlayCtx.moveTo(bx + bw - cornerLen, by);
+      overlayCtx.lineTo(bx + bw, by);
+      overlayCtx.lineTo(bx + bw, by + cornerLen);
+      overlayCtx.moveTo(bx + bw, by + bh - cornerLen);
+      overlayCtx.lineTo(bx + bw, by + bh);
+      overlayCtx.lineTo(bx + bw - cornerLen, by + bh);
+      overlayCtx.moveTo(bx + cornerLen, by + bh);
+      overlayCtx.lineTo(bx, by + bh);
+      overlayCtx.lineTo(bx, by + bh - cornerLen);
+      overlayCtx.stroke();
+      overlayCtx.restore();
     }
   }, [imgSize, wrapperSize, bbox, action, isFinished, maskBase64]);
+
+  useEffect(() => {
+    renderOverlay(true);
+  }, [renderOverlay]);
+
+  useEffect(() => {
+    if (bbox || action || isFinished) {
+      renderOverlay(false);
+    }
+  }, [bbox, action, isFinished, renderOverlay]);
 
   return (
     <GlassCard glow className="w-full h-full flex-1 flex flex-col min-h-0 overflow-hidden">

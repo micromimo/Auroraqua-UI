@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Activity, Wifi, WifiOff, Settings, Info, Home } from 'lucide-react'
+import { Wifi, WifiOff, Settings, Info, Home } from 'lucide-react'
 import Sidebar from '../components/core/Sidebar'
 import VideoPlayer from '../components/core/VideoPlayer'
 import Toast from '../components/core/Toast'
@@ -110,11 +110,6 @@ export default function Dashboard() {
               <Link to="/about" className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors">
                 <Info className="w-4 h-4" />
                 <span>关于</span>
-              </Link>
-              <div className="h-6 w-px bg-gray-300/50" />
-              <Link to="/case2" className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors">
-                <Activity className="w-4 h-4" />
-                <span>Case2</span>
               </Link>
               <div className="h-6 w-px bg-gray-300/50" />
               <Link to="/init" className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors">

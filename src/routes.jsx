@@ -5,9 +5,31 @@ import Dashboard from './pages/Dashboard'
 import Settings from './pages/Settings'
 import About from './pages/About'
 import Case2 from './pages/Case2'
+import Case3 from './pages/Case3'
 
 function AnimatedRoutes() {
   const location = useLocation()
+  const isCase3 = location.pathname.startsWith('/case3')
+
+  if (isCase3) {
+    return (
+      <Routes location={location}>
+        <Route path="/case3" element={<Navigate to="/case3/dashboard" replace />} />
+        <Route path="/case3/dashboard" element={<Case3 />} />
+        <Route path="/case3/management" element={<Case3 />} />
+        <Route path="/case3/chat" element={<Case3 />} />
+        <Route path="/case3/markdown" element={<Case3 />} />
+        <Route path="/case3/mindmap" element={<Case3 />} />
+        <Route path="/case3/video" element={<Case3 />} />
+        <Route path="/case3/social" element={<Navigate to="/case3/social/main" replace />} />
+        <Route path="/case3/social/main" element={<Case3 />} />
+        <Route path="/case3/social/profile" element={<Case3 />} />
+        <Route path="/case3/social/settings" element={<Case3 />} />
+        <Route path="/case3/forum" element={<Case3 />} />
+        <Route path="/case3/music" element={<Case3 />} />
+      </Routes>
+    )
+  }
 
   return (
     <AnimatePresence mode="wait">
