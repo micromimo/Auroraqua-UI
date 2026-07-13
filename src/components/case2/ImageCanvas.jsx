@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
-import GlassCard from './GlassCard';
+import GlassCard from '../ui/GlassCard';
 
 const debounce = (fn, delay) => {
   let timer = null;
@@ -189,17 +189,17 @@ export default function ImageCanvas({
     <GlassCard glow className="w-full h-full flex-1 flex flex-col min-h-0 overflow-hidden">
       <div ref={wrapperRef} className="relative w-full h-full">
         {!imagePath ? (
-          <div className="absolute inset-0 flex items-center justify-center text-center text-slate-600">
+          <div className="absolute inset-0 flex items-center justify-center text-center text-body">
             <div>
               <div className="text-5xl mb-4 opacity-70">🖼️</div>
-              <div className="text-lg font-medium">请在左侧点击「选择图像」开始</div>
-              <div className="text-sm mt-2 text-slate-500">
+              <div className="text-lg font-medium text-heading">请在左侧点击「选择图像」开始</div>
+              <div className="text-sm mt-2 text-muted">
                 支持 JPG / PNG / WEBP
               </div>
             </div>
           </div>
         ) : error ? (
-          <div className="absolute inset-0 flex items-center justify-center text-center text-slate-700 px-6">
+          <div className="absolute inset-0 flex items-center justify-center text-center text-heading px-6">
             <div>
               <div className="text-5xl mb-4">⚠️</div>
               <div className="text-sm text-pink-700 break-all">{error}</div>
@@ -236,7 +236,7 @@ export default function ImageCanvas({
               className="absolute inset-0 pointer-events-none"
             />
             {!imgSize.w && imgUrl && (
-              <div className="absolute inset-0 flex items-center justify-center text-slate-500 text-sm">
+              <div className="absolute inset-0 flex items-center justify-center text-muted text-sm">
                 加载中...
               </div>
             )}

@@ -17,7 +17,12 @@ function SocialSidebar({ activeItem, onItemClick }) {
   const navigate = useNavigate();
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const scrollableParent = document.querySelector('.overflow-auto');
+    if (scrollableParent) {
+      scrollableParent.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const handleClick = (item) => {
@@ -26,14 +31,20 @@ function SocialSidebar({ activeItem, onItemClick }) {
   };
 
   return (
-    <aside className="w-64 flex flex-col shrink-0">
-      <div className="liquid-glass rounded-2xl p-4 flex flex-col h-full shadow-sm shadow-slate-300/20">
-        <div className="w-12 h-12 rounded-xl overflow-hidden mb-6 border-2 border-white/30">
-          <img
-            src="https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:vg4lorilmjn5ztscb5fh7y2n/bafkreiek3mwh7kpqivzsviwnbnw6ewzqgsva4767rx2dbups24s3bf523a"
-            alt="User Avatar"
-            className="w-full h-full object-cover"
-          />
+    <aside className="w-full h-full min-h-0 flex flex-col overflow-y-auto p-2">
+      <div className="liquid-glass rounded-2xl p-4 flex flex-col">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 rounded-xl overflow-hidden avatar-border">
+            <img
+              src="https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:vg4lorilmjn5ztscb5fh7y2n/bafkreiek3mwh7kpqivzsviwnbnw6ewzqgsva4767rx2dbups24s3bf523a"
+              alt="User Avatar"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div>
+            <h1 className="text-sm font-bold gradient-text">Prysm™</h1>
+            <p className="text-[10px] text-muted">Reflect every lifestyle.</p>
+          </div>
         </div>
 
         <nav className="flex-1 space-y-1">
@@ -47,7 +58,7 @@ function SocialSidebar({ activeItem, onItemClick }) {
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 relative overflow-hidden ${
                   isActive
                     ? 'text-pink-700'
-                    : 'text-slate-600 hover:text-slate-800 hover:bg-white/20'
+                    : 'text-body hover:text-heading hover:bg-white/20'
                 }`}
                 style={isActive ? {
                   background: 'linear-gradient(135deg, rgba(255, 211, 219, 0.8), rgba(255, 211, 219, 0.4))',
@@ -73,7 +84,7 @@ function SocialSidebar({ activeItem, onItemClick }) {
 
         <button
           onClick={scrollToTop}
-          className="mt-4 w-10 h-10 mx-auto rounded-full liquid-glass flex items-center justify-center text-slate-500 hover:text-slate-700 hover:scale-110 transition-all duration-300"
+          className="mt-4 w-10 h-10 mx-auto rounded-full liquid-glass flex items-center justify-center text-muted hover:text-body hover:scale-110 transition-all duration-300"
         >
           <ArrowUp className="w-4 h-4" />
         </button>

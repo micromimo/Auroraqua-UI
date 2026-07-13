@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import UserAvatar from '../components/common/UserAvatar';
-import MermaidRenderer from '../components/common/MermaidRenderer';
-import Toggle from '../components/common/Toggle';
-import StatPill from '../components/common/StatPill';
+import UserAvatar from '../components/ui/UserAvatar';
+import MermaidRenderer from '../components/ui/MermaidRenderer';
+import Toggle from '../components/form/Toggle';
+import StatPill from '../components/data/StatPill';
 
 describe('Common Components', () => {
   describe('UserAvatar', () => {

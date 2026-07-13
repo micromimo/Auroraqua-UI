@@ -2,6 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-primary: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 40%, #E6E6FA 100%);
+  --color-primary: #ec4899;
+  --color-secondary: #8b5cf6;
+  --color-accent: #f472b6;
+  --color-neutral-50: #faf5ff;
+  --color-neutral-100: #f3e8ff;
+  --color-neutral-200: #e9d5ff;
+  --color-neutral-300: #d8b4fe;
+  --color-neutral-400: #c084fc;
+  --color-neutral-500: #a855f7;
+  --color-neutral-600: #9333ea;
+  --color-neutral-700: #7e22ce;
+  --color-neutral-800: #6b21a8;
+  --color-neutral-900: #581c87;
+  --text-heading: #1e1b4b;
+  --text-body: #312e81;
+  --text-secondary: #6366f1;
+  --text-muted: #818cf8;
+  --text-glass-heading: #1e1b4b;
+  --text-glass-body: #312e81;
+  --text-glass-muted: #6366f1;
+  --is-dark: false;
+}
+
+@font-face {
+  font-family: 'CustomPingFang';
+  src: url('../assets/PingFang SC.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CustomMonaco';
+  src: url('../assets/Monaco.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   html, body, #root {
     width: 100%;
@@ -9,11 +50,12 @@
   }
   
   body {
-    background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 40%, #E6E6FA 100%);
-    color: #1a1a2e;
-    font-family: "PingFang SC", "苹方", Monaco, Menlo, Consolas, "Courier New", monospace;
+    background: var(--bg-primary);
+    color: var(--text-body);
+    font-family: "CustomPingFang", "PingFang SC", "苹方", "CustomMonaco", Monaco, Menlo, Consolas, "Courier New", monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background 0.3s ease, color 0.3s ease;
   }
 
   h1, h2, h3, h4, h5, h6,
@@ -21,10 +63,26 @@
   [class*="title"],
   [class*="Title"] {
     font-weight: 700;
+    color: var(--text-heading);
   }
 }
 
 @layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .avatar-border {
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 
+      0 2px 8px rgba(31, 38, 135, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
   .glass {
     background: rgba(255, 255, 255, 0.35);
     border: 1px solid rgba(255, 255, 255, 0.5);
@@ -49,6 +107,14 @@
     box-shadow: 
       0 8px 32px rgba(31, 38, 135, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  
+  .scheme-glass {
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 
+      0 8px 32px rgba(31, 38, 135, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
   
   .glass-hover {
@@ -150,7 +216,11 @@
   }
 
   .input-glass {
+    position: relative;
+    overflow: hidden;
     background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 12px;
     padding: 10px 14px;
@@ -159,6 +229,7 @@
     box-shadow:
       0 2px 8px rgba(31, 38, 135, 0.1),
       inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    isolation: isolate;
   }
 
   .input-glass:focus {
@@ -332,20 +403,20 @@
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #7b61ff 0%, #ff6b9d 50%, #ffb86b 100%);
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-primary), var(--color-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .btn-primary {
-    background: linear-gradient(135deg, #7b61ff, #9d7fff);
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
     color: white;
     border: none;
   }
 
   .btn-primary:hover {
-    background: linear-gradient(135deg, #6b51ff, #8d6fff);
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
     box-shadow: 0 6px 20px rgba(123, 97, 255, 0.4);
   }
 
@@ -366,18 +437,24 @@
     -webkit-backdrop-filter: blur(24px) saturate(1.5);
     border: 1px solid rgba(255, 255, 255, 0.25);
     box-shadow:
-      0 8px 32px rgba(31, 38, 135, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      0 1px 1px rgba(0, 0, 0, 0.05),
+      0 4px 8px rgba(0, 0, 0, 0.04),
+      0 8px 16px rgba(0, 0, 0, 0.04),
+      0 16px 32px rgba(0, 0, 0, 0.03),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
   }
 
   .liquid-glass-strong {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(24px) saturate(1.5);
     -webkit-backdrop-filter: blur(24px) saturate(1.5);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     box-shadow:
-      0 8px 32px rgba(31, 38, 135, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      0 2px 2px rgba(0, 0, 0, 0.06),
+      0 8px 16px rgba(0, 0, 0, 0.05),
+      0 16px 32px rgba(0, 0, 0, 0.04),
+      0 24px 48px rgba(0, 0, 0, 0.03),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 
   .liquid-glass-glow {
@@ -437,7 +514,7 @@
     padding: 10px 14px;
     font-size: 0.875rem;
     font-weight: 500;
-    color: #be185d;
+    color: var(--color-primary);
     transition: all 0.2s ease;
     box-shadow:
       0 0 20px rgba(244, 114, 182, 0.3),
@@ -624,7 +701,7 @@
   }
 
   .modal-btn-primary {
-    background: linear-gradient(135deg, rgba(236, 72, 153, 0.9), rgba(139, 92, 246, 0.9));
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 12px;
     padding: 10px 16px;
@@ -639,7 +716,7 @@
   }
 
   .modal-btn-primary:hover {
-    background: linear-gradient(135deg, rgba(236, 72, 153, 1), rgba(139, 92, 246, 1));
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     transform: translateY(-1px);
     box-shadow:
       0 6px 20px rgba(236, 72, 153, 0.45),
@@ -674,12 +751,12 @@
   }
 
   .neon-text-pink {
-    color: #db2777;
+    color: var(--color-primary);
     text-shadow: 0 0 12px rgba(244, 114, 182, 0.5);
   }
 
   .neon-text-purple {
-    color: #7c3aed;
+    color: var(--color-secondary);
     text-shadow: 0 0 12px rgba(167, 139, 250, 0.5);
   }
 
@@ -702,8 +779,8 @@
   .metric-bar {
     background: linear-gradient(
       90deg,
-      #ec4899,
-      #8b5cf6
+      var(--color-primary),
+      var(--color-secondary)
     );
     box-shadow: 0 0 12px rgba(244, 114, 182, 0.5);
   }

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import GlassCard from './GlassCard';
-import GlassButton from './GlassButton';
-import Switch from './Switch';
-import Slider from './Slider';
+import GlassCard from '../ui/GlassCard';
+import GlassButton from '../ui/GlassButton';
+import Switch from '../ui/Switch';
+import Slider from '../ui/Slider';
 
 export const DEFAULT_PROCESSING_CONFIG = {
   enable_rl_model: true,
@@ -61,12 +61,12 @@ function ModelSelector({ value, onChange }) {
     <div className="relative">
       <button
         type="button"
-        className="w-full flex items-center justify-between gap-2 px-3 py-2 rounded-lg bg-white/30 hover:bg-white/50 backdrop-blur border border-purple-200/40 text-[11px] text-slate-700 transition-colors"
+        className="w-full flex items-center justify-between gap-2 px-3 py-2 rounded-lg bg-white/30 hover:bg-white/50 backdrop-blur border border-purple-200/40 text-[11px] text-heading transition-colors"
         onClick={() => setOpen(!open)}
       >
         <div className="text-left flex-1 min-w-0">
           <div className="font-semibold truncate">{selected.label}</div>
-          <div className="text-[10px] text-slate-500 truncate">{selected.desc}</div>
+          <div className="text-[10px] text-muted truncate">{selected.desc}</div>
         </div>
         <Chevron open={open} />
       </button>
@@ -79,7 +79,7 @@ function ModelSelector({ value, onChange }) {
                 key={m.key}
                 type="button"
                 className={`w-full text-left px-3 py-2 text-[11px] border-b border-purple-100/60 last:border-0 transition-colors ${
-                  active ? "bg-purple-100/70 text-purple-800" : "hover:bg-purple-50 text-slate-700"
+                  active ? "bg-purple-100/70 text-purple-800" : "hover:bg-purple-50 text-heading"
                 }`}
                 onClick={() => {
                   onChange(m.key);
@@ -87,7 +87,7 @@ function ModelSelector({ value, onChange }) {
                 }}
               >
                 <div className="font-semibold">{m.label}</div>
-                <div className="text-[10px] text-slate-500">{m.desc}</div>
+                <div className="text-[10px] text-muted">{m.desc}</div>
               </button>
             );
           })}
@@ -125,7 +125,7 @@ export default function ControlPanel({
     displayAction.toLowerCase().includes("zoom") || displayAction.toLowerCase().includes("shrink") || displayAction.toLowerCase().includes("grow")
       ? "text-pink-600"
       : displayAction === "— IDLE —"
-      ? "text-slate-400"
+      ? "text-muted"
       : displayAction === "Complete"
       ? "text-green-600"
       : "text-purple-600";
@@ -142,14 +142,14 @@ export default function ControlPanel({
     <GlassCard className="flex flex-col gap-4">
       <div className="flex items-center gap-2">
         <div className="w-2 h-2 rounded-full bg-pink-500 animate-pulse shadow-[0_0_8px_rgba(244,114,182,0.8)]" />
-        <h2 className="text-sm font-bold tracking-[0.25em] text-slate-700 uppercase">
+        <h2 className="text-sm font-bold tracking-[0.25em] text-heading uppercase">
           Control Panel
         </h2>
       </div>
 
       <div className="liquid-glass-strong rounded-xl p-3 space-y-3">
         <div className="flex items-center justify-between">
-          <div className="text-[10px] tracking-[0.3em] uppercase text-slate-500 font-bold">
+          <div className="text-[10px] tracking-[0.3em] uppercase text-muted font-bold">
             Processing Options
           </div>
           <button
@@ -166,8 +166,8 @@ export default function ControlPanel({
             <div className="flex items-center gap-2">
               <span className="text-base">🎀</span>
               <div>
-                <div className="text-xs font-semibold text-slate-700">强化学习模型</div>
-                <div className="text-[10px] text-slate-500">RL Model</div>
+                <div className="text-xs font-semibold text-heading">强化学习模型</div>
+                <div className="text-[10px] text-muted">RL Model</div>
               </div>
             </div>
             <Switch checked={enableRlModel} onChange={() => setEnableRlModel(!enableRlModel)} />
@@ -222,8 +222,8 @@ export default function ControlPanel({
             <div className="flex items-center gap-2">
               <span className="text-base">🪄</span>
               <div>
-                <div className="text-xs font-semibold text-slate-700">IMG.LY Create</div>
-                <div className="text-[10px] text-slate-500">background-removal-rs</div>
+                <div className="text-xs font-semibold text-heading">IMG.LY Create</div>
+                <div className="text-[10px] text-muted">background-removal-rs</div>
               </div>
             </div>
             <Switch checked={config.enable_rembg} onChange={() => updateConfig({ enable_rembg: !config.enable_rembg })} />
@@ -254,7 +254,7 @@ export default function ControlPanel({
                     formatValue={(v) => v.toFixed(2)}
                   />
                   <div className="flex items-center justify-between pt-1">
-                    <span className="text-[11px] text-slate-600">二元模式 (硬边缘)</span>
+                    <span className="text-[11px] text-body">二元模式 (硬边缘)</span>
                     <Switch
                       checked={config.rembg_binary_mode}
                       onChange={() => updateConfig({ rembg_binary_mode: !config.rembg_binary_mode })}
@@ -271,8 +271,8 @@ export default function ControlPanel({
             <div className="flex items-center gap-2">
               <span className="text-base">🎨</span>
               <div>
-                <div className="text-xs font-semibold text-slate-700">传统图像处理</div>
-                <div className="text-[10px] text-slate-500">imageproc Rust Create</div>
+                <div className="text-xs font-semibold text-heading">传统图像处理</div>
+                <div className="text-[10px] text-muted">imageproc Rust Create</div>
               </div>
             </div>
             <Switch checked={enableTraditional} onChange={() => setEnableTraditional(!enableTraditional)} />
@@ -336,7 +336,7 @@ export default function ControlPanel({
                   />
 
                   <div className="flex items-center justify-between mt-2 pt-2 border-t border-pink-100/50">
-                    <span className="text-[11px] text-slate-600">Adaptive Threshold</span>
+                    <span className="text-[11px] text-body">Adaptive Threshold</span>
                     <Switch checked={config.trad_use_adaptive_threshold} onChange={() => updateConfig({ trad_use_adaptive_threshold: !config.trad_use_adaptive_threshold })} />
                   </div>
                   {config.trad_use_adaptive_threshold && (
@@ -363,7 +363,7 @@ export default function ControlPanel({
                   )}
 
                   <div className="flex items-center justify-between mt-2 pt-2 border-t border-pink-100/50">
-                    <span className="text-[11px] text-slate-600">双边滤波</span>
+                    <span className="text-[11px] text-body">双边滤波</span>
                     <Switch checked={config.trad_bilateral_filter} onChange={() => updateConfig({ trad_bilateral_filter: !config.trad_bilateral_filter })} />
                   </div>
                   {config.trad_bilateral_filter && (
@@ -390,7 +390,7 @@ export default function ControlPanel({
                   )}
 
                   <div className="flex items-center justify-between mt-2 pt-2 border-t border-pink-100/50">
-                    <span className="text-[11px] text-slate-600">距离变换</span>
+                    <span className="text-[11px] text-body">距离变换</span>
                     <Switch checked={config.trad_use_distance_transform} onChange={() => updateConfig({ trad_use_distance_transform: !config.trad_use_distance_transform })} />
                   </div>
                   {config.trad_use_distance_transform && (
@@ -411,19 +411,19 @@ export default function ControlPanel({
         </div>
       </div>
 
-      <GlassButton className="w-full text-slate-700 hover:text-pink-700" onClick={onSelectImage}>
+      <GlassButton className="w-full text-heading hover:text-pink-700" onClick={onSelectImage}>
         📁 选取图像
       </GlassButton>
 
-      <div className="text-xs text-slate-500 truncate">
+      <div className="text-xs text-muted truncate">
         {imagePath ? imagePath : "尚未选取图像"}
       </div>
 
       <GlassButton 
         className={`w-full ${
           canStart
-            ? "text-slate-700 liquid-glass-glow hover:text-pink-700"
-            : "text-slate-400 cursor-not-allowed"
+            ? "text-heading liquid-glass-glow hover:text-pink-700"
+            : "text-muted cursor-not-allowed"
         }`}
         onClick={onStartRl}
         disabled={!canStart}
@@ -439,7 +439,7 @@ export default function ControlPanel({
 
       <div className="mt-2 liquid-glass-strong rounded-xl p-4 space-y-4">
         <div>
-          <div className="text-[10px] tracking-[0.3em] uppercase text-slate-500 font-bold mb-1">
+          <div className="text-[10px] tracking-[0.3em] uppercase text-muted font-bold mb-1">
             Current Action
           </div>
           <div className={`text-lg font-mono font-bold ${actionColor}`}>
@@ -449,7 +449,7 @@ export default function ControlPanel({
 
         {pipelineStages.length > 0 && (
           <div>
-            <div className="text-[10px] tracking-[0.3em] uppercase text-slate-500 mb-1">
+            <div className="text-[10px] tracking-[0.3em] uppercase text-muted mb-1">
               Pipeline
             </div>
             <div className="space-y-1">
@@ -459,7 +459,7 @@ export default function ControlPanel({
                     ? "text-pink-600 font-semibold"
                     : stage.status === "done"
                     ? "text-green-600"
-                    : "text-slate-400";
+                    : "text-muted";
                 const iconSpin = stage.status === "running";
                 return (
                   <div key={stage.key} className={`flex items-center gap-2 text-[11px] ${color}`}>
@@ -479,16 +479,16 @@ export default function ControlPanel({
 
         <div className="flex justify-between items-center">
           <div>
-            <div className="text-[10px] tracking-[0.3em] uppercase text-slate-500">
+            <div className="text-[10px] tracking-[0.3em] uppercase text-muted">
               Step
             </div>
-            <div className="text-2xl font-mono font-bold text-slate-800">
+            <div className="text-2xl font-mono font-bold text-heading">
               {String(currentStep).padStart(2, "0")}
-              <span className="text-slate-500 text-sm"> / {displayTotalSteps}</span>
+              <span className="text-muted text-sm"> / {displayTotalSteps}</span>
             </div>
           </div>
           <div className="text-right">
-            <div className="text-[10px] tracking-[0.3em] uppercase text-slate-500">
+            <div className="text-[10px] tracking-[0.3em] uppercase text-muted">
               Confidence
             </div>
             <div className="text-2xl font-mono font-bold text-pink-600">
@@ -506,17 +506,17 @@ export default function ControlPanel({
 
         {history.length > 0 && (
           <div className="border-t border-slate-200 pt-2">
-            <div className="text-[10px] tracking-[0.3em] uppercase text-slate-500 mb-1">
+            <div className="text-[10px] tracking-[0.3em] uppercase text-muted mb-1">
               Action History
             </div>
             <div className="space-y-0.5 max-h-32 overflow-y-auto text-xs">
               {history.slice().reverse().map((h, idx) => (
                 <div key={`history-${idx}-${h.step}`} className="flex items-center gap-1 font-mono">
-                  <span className="text-slate-400 w-8">Step {h.step}:</span>
+                  <span className="text-muted w-8">Step {h.step}:</span>
                   <span className={h.action_taken.toLowerCase().includes("zoom") || h.action_taken.toLowerCase().includes("shrink") || h.action_taken.toLowerCase().includes("grow") ? "text-pink-600" : h.action_taken === "Complete" ? "text-green-600" : "text-purple-600"}>
                     {h.action_taken}
                   </span>
-                  <span className="text-slate-400 ml-auto">{(h.confidence * 100).toFixed(1)}%</span>
+                  <span className="text-muted ml-auto">{(h.confidence * 100).toFixed(1)}%</span>
                 </div>
               ))}
             </div>

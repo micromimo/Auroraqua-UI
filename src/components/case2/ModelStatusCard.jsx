@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import GlassCard from './GlassCard';
+import GlassCard from '../ui/GlassCard';
 
 function formatBytes(bytes) {
   if (!bytes) return "—";
@@ -66,7 +66,7 @@ export default function ModelStatusCard({ modelStatus, onRefreshModel }) {
     <GlassCard className="flex flex-col gap-4">
       <div className="liquid-glass-strong rounded-xl p-3">
         <div className="flex items-center justify-between mb-2">
-          <div className="text-[10px] tracking-[0.3em] uppercase text-slate-500">
+          <div className="text-[10px] tracking-[0.3em] uppercase text-muted">
             Model Status
           </div>
           <div className="flex items-center gap-1.5">
@@ -95,7 +95,7 @@ export default function ModelStatusCard({ modelStatus, onRefreshModel }) {
             )}
             {onRefreshModel && (
               <button
-                className="ml-1 text-[10px] text-slate-400 hover:text-pink-600 transition-colors flex items-center gap-1"
+                className="ml-1 text-[10px] text-muted hover:text-pink-600 transition-colors flex items-center gap-1"
                 onClick={onRefreshModel}
                 title="Refresh model status"
               >
@@ -110,25 +110,25 @@ export default function ModelStatusCard({ modelStatus, onRefreshModel }) {
           </div>
         )}
         {modelReady && modelStatus ? (
-          <div className="text-[11px] space-y-0.5 text-slate-600">
+          <div className="text-[11px] space-y-0.5 text-body">
             <div className="flex justify-between">
-              <span className="text-slate-500">Size</span>
+              <span className="text-muted">Size</span>
               <span className="font-mono">{formatBytes(modelStatus.model_size_bytes)}</span>
             </div>
             {modelStatus.last_modified && (
               <div className="flex justify-between">
-                <span className="text-slate-500">Trained</span>
+                <span className="text-muted">Trained</span>
                 <span className="font-mono">{modelStatus.last_modified}</span>
               </div>
             )}
             {trainingInfo && (
               <div className="flex justify-between">
-                <span className="text-slate-500">Last Epoch</span>
+                <span className="text-muted">Last Epoch</span>
                 <span className="font-mono">{trainingInfo.last_epoch} / {trainingInfo.epochs}</span>
               </div>
             )}
             {modelStatus.model_path && (
-              <div className="text-slate-400 truncate mt-1" title={modelStatus.model_path}>
+              <div className="text-muted truncate mt-1" title={modelStatus.model_path}>
                 {modelStatus.model_path.split("/").pop()}
               </div>
             )}
@@ -143,20 +143,20 @@ export default function ModelStatusCard({ modelStatus, onRefreshModel }) {
             )}
             {showDetails && trainingInfo && (
               <div className="mt-2 pt-2 border-t border-white/40 space-y-0.5 text-[11px]">
-                <div className="flex justify-between"><span className="text-slate-500">Epochs</span><span className="font-mono">{trainingInfo.epochs}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Batch Size</span><span className="font-mono">{trainingInfo.batch_size}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Learning Rate</span><span className="font-mono">{trainingInfo.learning_rate.toExponential(2)}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Max steps/episode</span><span className="font-mono">{trainingInfo.max_steps_per_episode}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Last Avg Loss</span><span className="font-mono">{trainingInfo.last_avg_loss.toFixed(4)}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Last Avg Reward</span><span className="font-mono">{trainingInfo.last_avg_reward.toFixed(4)}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Last LR</span><span className="font-mono">{trainingInfo.last_lr.toExponential(2)}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">PolicyNetwork params</span><span className="font-mono">{formatNum(trainingInfo.total_params)}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Trainable</span><span className="font-mono">{formatNum(trainingInfo.trainable_params)}</span></div>
+                <div className="flex justify-between"><span className="text-muted">Epochs</span><span className="font-mono">{trainingInfo.epochs}</span></div>
+                <div className="flex justify-between"><span className="text-muted">Batch Size</span><span className="font-mono">{trainingInfo.batch_size}</span></div>
+                <div className="flex justify-between"><span className="text-muted">Learning Rate</span><span className="font-mono">{trainingInfo.learning_rate.toExponential(2)}</span></div>
+                <div className="flex justify-between"><span className="text-muted">Max steps/episode</span><span className="font-mono">{trainingInfo.max_steps_per_episode}</span></div>
+                <div className="flex justify-between"><span className="text-muted">Last Avg Loss</span><span className="font-mono">{trainingInfo.last_avg_loss.toFixed(4)}</span></div>
+                <div className="flex justify-between"><span className="text-muted">Last Avg Reward</span><span className="font-mono">{trainingInfo.last_avg_reward.toFixed(4)}</span></div>
+                <div className="flex justify-between"><span className="text-muted">Last LR</span><span className="font-mono">{trainingInfo.last_lr.toExponential(2)}</span></div>
+                <div className="flex justify-between"><span className="text-muted">PolicyNetwork params</span><span className="font-mono">{formatNum(trainingInfo.total_params)}</span></div>
+                <div className="flex justify-between"><span className="text-muted">Trainable</span><span className="font-mono">{formatNum(trainingInfo.trainable_params)}</span></div>
               </div>
             )}
           </div>
         ) : (
-          <div className="text-[11px] text-slate-500">
+          <div className="text-[11px] text-muted">
             Train a model first or place policy_network.onnx in models/
           </div>
         )}

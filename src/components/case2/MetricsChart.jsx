@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import GlassCard from './GlassCard';
+import GlassCard from '../ui/GlassCard';
 
 function MetricsChart({ history = [], totalSteps = 30 }) {
   const maxSteps = totalSteps;
@@ -37,7 +37,7 @@ function MetricsChart({ history = [], totalSteps = 30 }) {
     <GlassCard className="flex flex-col gap-4">
       <div className="flex items-center gap-2">
         <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse shadow-[0_0_8px_rgba(167,139,250,0.8)]" />
-        <h2 className="text-sm font-semibold tracking-[0.25em] text-slate-700 uppercase">
+        <h2 className="text-sm font-semibold tracking-[0.25em] text-heading uppercase">
           Confidence Curve
         </h2>
       </div>
@@ -106,7 +106,7 @@ function MetricsChart({ history = [], totalSteps = 30 }) {
           ))}
         </svg>
 
-        <div className="flex justify-between mt-2 text-[10px] text-slate-500 font-mono">
+        <div className="flex justify-between mt-2 text-[10px] text-muted font-mono">
           {stepLabels.map((step) => (
             <span key={step}>Step {step}</span>
           ))}
@@ -115,13 +115,13 @@ function MetricsChart({ history = [], totalSteps = 30 }) {
 
       <div className="grid grid-cols-2 gap-3 text-xs">
         <div className="liquid-glass rounded-lg p-3">
-          <div className="text-slate-600 mb-1">Total Steps</div>
-          <div className="text-xl font-mono font-bold text-slate-800">
+          <div className="text-body mb-1">Total Steps</div>
+          <div className="text-xl font-mono font-bold text-heading">
             {data.length}
           </div>
         </div>
         <div className="liquid-glass rounded-lg p-3">
-          <div className="text-slate-600 mb-1">Peak Conf.</div>
+          <div className="text-body mb-1">Peak Conf.</div>
           <div className="text-xl font-mono font-bold text-pink-600">
             {data.length > 0
               ? (Math.max(...data.map((d) => d.confidence)) * 100).toFixed(1) +

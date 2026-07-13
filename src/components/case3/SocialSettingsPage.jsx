@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronRight, Bell, Lock, Globe, Palette, Volume2, Shield, HelpCircle, LogOut, User, Mail, MapPin, Link, ChevronLeft, MessageSquare } from 'lucide-react';
-import Switch from '../case2/Switch';
+import Switch from '../ui/Switch';
 
 function SocialSettingsPage() {
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
@@ -46,10 +46,10 @@ function SocialSettingsPage() {
     <div className="min-h-full">
       <div className="sticky top-0 z-30 px-4 pb-2 bg-gradient-to-b from-background via-background/95 to-transparent">
         <div className="flex items-center justify-between mb-4 lg:hidden">
-          <button className="w-10 h-10 rounded-xl liquid-glass flex items-center justify-center text-slate-600">
+          <button className="w-10 h-10 rounded-xl liquid-glass flex items-center justify-center text-body">
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <h2 className="text-lg font-bold text-slate-800">設定</h2>
+          <h2 className="text-lg font-bold text-heading">設定</h2>
           <div className="w-10" />
         </div>
       </div>
@@ -60,7 +60,7 @@ function SocialSettingsPage() {
             const groupElement = (
               <div key={group.title} className="liquid-glass rounded-2xl overflow-hidden">
                 <div className="px-5 py-3 bg-white/10 border-b border-white/10">
-                  <h4 className="text-sm font-bold text-slate-700">{group.title}</h4>
+                  <h4 className="text-sm font-bold text-heading">{group.title}</h4>
                 </div>
                 <div className="divide-y divide-white/10">
                   {group.items.map((item) => {
@@ -75,9 +75,9 @@ function SocialSettingsPage() {
                           <Icon className="w-4 h-4" />
                         </div>
                         <div className="flex-1 text-left">
-                          <span className="text-sm font-medium text-slate-700">{item.label}</span>
+                          <span className="text-sm font-medium text-body">{item.label}</span>
                           {item.value && !item.toggle && (
-                            <span className="text-xs text-slate-400 ml-2">{item.value}</span>
+                            <span className="text-xs text-muted ml-2">{item.value}</span>
                           )}
                         </div>
                         {item.toggle ? (
@@ -86,7 +86,7 @@ function SocialSettingsPage() {
                             onChange={() => item.onChange(!item.value)}
                           />
                         ) : item.arrow ? (
-                          <ChevronRight className="w-5 h-5 text-slate-400" />
+                          <ChevronRight className="w-5 h-5 text-muted" />
                         ) : null}
                       </button>
                     );

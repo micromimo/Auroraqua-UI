@@ -60,49 +60,53 @@ function SocialProfilePage({ onImageClick }) {
     <div className="min-h-full">
       <div className="sticky top-0 z-30 px-4 pb-2 bg-gradient-to-b from-background via-background/95 to-transparent">
         <div className="flex items-center justify-between mb-4 lg:hidden">
-          <button className="w-10 h-10 rounded-xl liquid-glass flex items-center justify-center text-slate-600">
+          <button className="w-10 h-10 rounded-xl liquid-glass flex items-center justify-center text-body">
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <h2 className="text-lg font-bold text-slate-800">{userData.name}</h2>
+          <h2 className="text-lg font-bold text-heading">{userData.name}</h2>
           <div className="w-10" />
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <div className="liquid-glass rounded-2xl p-4 sticky top-0 z-30 shadow-sm shadow-slate-300/20 backdrop-blur-md">
+          <div className="liquid-glass rounded-2xl p-4 sticky top-0 z-30 backdrop-blur-md">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full overflow-hidden border-3 border-white/50 shadow-md">
+                <div className="w-16 h-16 rounded-full overflow-hidden avatar-border">
                   <img src={userData.avatar} alt={userData.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-800">{userData.name}</h3>
-                  <p className="text-sm text-slate-500">{userData.handle}</p>
+                  <h3 className="text-lg font-bold text-heading">{userData.name}</h3>
+                  <p className="text-sm text-muted">{userData.handle}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <button className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                  isFollowing
-                    ? 'bg-white/30 text-slate-600'
-                    : 'bg-blue-500 text-white hover:bg-blue-600'
-                }`}
+                <button 
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                    isFollowing
+                      ? 'bg-white/30 text-body'
+                      : 'text-[#FAFAFA] hover:shadow-lg hover:shadow-pink-400/30'
+                  }`}
+                  style={!isFollowing ? {
+                    background: 'linear-gradient(to right, #ec4899 0%, #FEBEBE 100%)'
+                  } : {}}
                   onClick={() => setIsFollowing(!isFollowing)}
                 >
                   {isFollowing ? (
                     <>
                       <UserCheck className="w-4 h-4" />
-                      <span>已关注</span>
+                      <span>Followed</span>
                     </>
                   ) : (
                     <>
                       <UserPlus className="w-4 h-4" />
-                      <span>关注</span>
+                      <span>Follow</span>
                     </>
                   )}
                 </button>
-                <button className="w-9 h-9 rounded-xl bg-white/30 flex items-center justify-center text-slate-600 hover:bg-white/50 transition-colors">
+                <button className="w-9 h-9 rounded-xl bg-white/30 flex items-center justify-center text-body hover:bg-white/50 transition-colors">
                   <Edit3 className="w-4 h-4" />
                 </button>
-                <button className="w-9 h-9 rounded-xl bg-white/30 flex items-center justify-center text-slate-600 hover:bg-white/50 transition-colors">
+                <button className="w-9 h-9 rounded-xl bg-white/30 flex items-center justify-center text-body hover:bg-white/50 transition-colors">
                   <MoreHorizontal className="w-5 h-5" />
                 </button>
               </div>
@@ -114,10 +118,10 @@ function SocialProfilePage({ onImageClick }) {
       <div className="px-4 pb-6">
         <div className="max-w-3xl mx-auto space-y-4">
           <div className="liquid-glass rounded-2xl p-5">
-            <p className="text-sm text-slate-700 mb-4">{userData.bio}</p>
+            <p className="text-sm text-body mb-4">{userData.bio}</p>
             
             <div className="flex flex-wrap items-center gap-4 mb-4">
-              <div className="flex items-center gap-1.5 text-sm text-slate-600">
+              <div className="flex items-center gap-1.5 text-sm text-body">
                 <Calendar className="w-4 h-4" />
                 <span>加入于 {userData.joined}</span>
               </div>
@@ -128,13 +132,13 @@ function SocialProfilePage({ onImageClick }) {
 
             <div className="flex gap-6">
               <div className="cursor-pointer hover:text-blue-500 transition-colors">
-                <span className="font-bold text-slate-800">{userData.following}</span>
-                <span className="text-sm text-slate-500 ml-1">关注中</span>
-              </div>
-              <div className="cursor-pointer hover:text-blue-500 transition-colors">
-                <span className="font-bold text-slate-800">{userData.followers}</span>
-                <span className="text-sm text-slate-500 ml-1">追隨者</span>
-              </div>
+              <span className="font-bold text-heading">{userData.following}</span>
+              <span className="text-sm text-muted ml-1">Follow中</span>
+            </div>
+            <div className="cursor-pointer hover:text-blue-500 transition-colors">
+              <span className="font-bold text-heading">{userData.followers}</span>
+              <span className="text-sm text-muted ml-1">追隨者</span>
+            </div>
             </div>
           </div>
 
@@ -148,7 +152,7 @@ function SocialProfilePage({ onImageClick }) {
                   className={`flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-medium transition-all relative overflow-hidden ${
                     isActive
                       ? 'text-pink-700'
-                      : 'text-slate-500 hover:text-slate-700 hover:bg-white/20'
+                      : 'text-muted hover:text-body hover:bg-white/20'
                   }`}
                   style={isActive ? {
                     background: 'linear-gradient(135deg, rgba(255, 211, 219, 0.8), rgba(255, 211, 219, 0.4))',
