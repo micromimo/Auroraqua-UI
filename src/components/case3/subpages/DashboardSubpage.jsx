@@ -437,13 +437,13 @@ export default function DashboardSubpage() {
               <div className="font-semibold text-sm text-body">销售额</div>
               <div className="font-semibold text-sm text-body">增长率</div>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2 pr-2">
               {tableData.map((item) => (
                 <motion.div
                   key={item.id}
                   whileHover={{ x: 4, backgroundColor: 'rgba(255, 255, 255, 0.3)' }}
                   transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-                  className="grid grid-cols-4 gap-4 p-3 rounded-xl bg-white/20 cursor-pointer"
+                  className="grid grid-cols-4 gap-4 p-3 rounded-xl bg-white/20 cursor-pointer origin-left"
                 >
                   <div className="text-sm font-medium text-heading">{item.name}</div>
                   <div className="text-sm text-body">{item.category}</div>

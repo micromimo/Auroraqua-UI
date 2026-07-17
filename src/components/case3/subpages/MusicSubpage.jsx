@@ -7,6 +7,7 @@ import SidebarNavItem from '../SidebarNavItem';
 import ParticleEffect from '../../ui/ParticleEffect';
 import RippleButton from '../../ui/RippleButton';
 import { FadeInCard, StaggerItem } from '../../ui/animations';
+import SearchInput from '../SearchInput';
 
 export default function MusicSubpage() {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
@@ -170,16 +171,15 @@ export default function MusicSubpage() {
             </div>
 
             <div className="flex-1 max-w-md mx-8">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
-                <input
-                  type="text"
-                  placeholder="搜索歌曲、艺人或专辑..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 rounded-xl bg-white/30 border border-white/40 text-sm text-heading placeholder-muted focus:outline-none focus:ring-2 focus:ring-pink-400/50 focus:bg-white/40 transition-all"
-                />
-              </div>
+              <SearchInput
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="搜索歌曲、艺人或专辑..."
+                glass={false}
+                className="w-full rounded-xl bg-white/30 border border-white/40 text-sm text-heading placeholder-muted focus:outline-none focus:ring-2 focus:ring-pink-400/50 focus:bg-white/40 transition-all"
+                style={{ paddingTop: 8, paddingBottom: 8, paddingLeft: 36, paddingRight: 16 }}
+                iconSize={20}
+              />
             </div>
 
             <div className="flex items-center gap-2">

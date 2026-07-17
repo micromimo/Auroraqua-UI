@@ -1,5 +1,5 @@
 {
-  "name": "ui-only",
+  "name": "auroraqua",
   "private": false,
   "version": "1.0.0",
   "type": "module",
@@ -13,6 +13,10 @@
     "tauri:build": "tauri build"
   },
   "dependencies": {
+    "@tanstack/react-virtual": "^3.14.6",
+    "@tauri-apps/api": "^2.11.1",
+    "@tauri-apps/plugin-shell": "^2.3.5",
+    "canvas-confetti": "^1.9.4",
     "framer-motion": "^12.42.2",
     "jspdf": "^4.2.1",
     "mermaid": "^11.16.0",

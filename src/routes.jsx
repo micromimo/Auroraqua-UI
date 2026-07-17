@@ -27,6 +27,11 @@ function AnimatedRoutes() {
         <Route path="/case3/social/settings" element={<Case3 />} />
         <Route path="/case3/forum" element={<Case3 />} />
         <Route path="/case3/music" element={<Case3 />} />
+        <Route path="/case3/prts" element={<Case3 />} />
+        <Route path="/case3/macos" element={<Case3 />} />
+        <Route path="/case3/lucide" element={<Case3 />} />
+        <Route path="/case3/confetti" element={<Case3 />} />
+        <Route path="/case3/badge" element={<Case3 />} />
       </Routes>
     )
   }

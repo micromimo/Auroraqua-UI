@@ -20,22 +20,35 @@ export default function MarkdownSubpage() {
 
 ## 引用
 
-> Under the spreading chestnut tree. I sold you and you sold me. There lie they, and here lie we. Under the spreading chestnut tree.
-> 
+> Under the spreading chestnut tree. I sold you and you sold me.
+> There lie they, and here lie we. Under the spreading chestnut tree.
 > —「1984」
 
 ## 代码示例
 
-\`\`\`javascript
-const greeting = "Hello, Auroraqua!";
-console.log(greeting);
+\`\`\`Rust
+struct Card {
+    title: String,
+    content: String,
+    created_at: chrono::DateTime<chrono::Utc>,
+}
 
-function createCard(title, content) {
-  return {
-    title: title,
-    content: content,
-    createdAt: new Date()
-  };
+impl Card {
+    fn new(title: &str, content: &str) -> Self {
+        Self {
+            title: title.to_string(),
+            content: content.to_string(),
+            created_at: chrono::Utc::now(),
+        }
+    }
+}
+
+fn main() {
+    let greeting = "Hello, Auroraqua!";
+    println!("{}", greeting);
+
+    let card = Card::new("Welcome", "Auroraqua UI Demo");
+    println!("Card: {} - {}", card.title, card.content);
 }
 \`\`\`
 

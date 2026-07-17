@@ -18,7 +18,7 @@ export default function About() {
                style={{ background: 'linear-gradient(135deg, #7b61ff, #ff6b9d)' }}>
             <Info className="w-10 h-10 text-white" />
           </div>
-          <h1 className="text-3xl font-semibold gradient-text mb-2">Aurorάqua UI</h1>
+          <h1 className="text-3xl font-semibold gradient-text mb-2">Aurorαqua UI</h1>
           <p className="text-muted">符合我自己口味的React UI方案😋</p>
         </div>
 
@@ -31,9 +31,9 @@ export default function About() {
             </a>
           </div>
           <p className="text-sm text-body leading-relaxed">
-            「Aurorάqua」 is a web UI template inspired by Apple LiquidGlass Design and Iceland(Ísland) Aurora, featuring a glassmorphism design and soft aurora gradients. Perfect for dashboards, control panels, and streaming apps. Built with React & Tailwind. Mozilla Public License 2.0, friendly for commercial use.<br />
+            「Aurorαqua」 is a web UI template inspired by Apple LiquidGlass Design and Iceland(Ísland) Aurora, featuring a glassmorphism design and soft aurora gradients. Perfect for dashboards, control panels, and streaming apps. Built with React & Tailwind. Mozilla Public License 2.0, friendly for commercial use.<br />
             ⚠️This serves only to showcase personal UI preferences; most features have not yet been developed, and remains far from complete currently.<br />
-            「Aurorάqua」是受 Apple LiquidGlass 設計風格和冰島極光啟發的 Web UI 模板，採用「玻璃擬態」設計與柔和的極光漸變效果。非常適用於儀表板、控制面板及串流應用，基於 React 和 Tailwind 構建。採用 Mozilla Public License 2.0 協議，支援商業用途。<br />
+            「Aurorαqua」是受 Apple LiquidGlass 設計風格和冰島極光啟發的 Web UI 模板，採用「玻璃擬態」設計與柔和的極光漸變效果。非常適用於儀表板、控制面板及串流應用，基於 React 和 Tailwind 構建。採用 Mozilla Public License 2.0 協議，支援商業用途。<br />
             ⚠️目前僅供個人UI喜好展示，大部分功能仍未開發，仍很不完善。<br />
 
           </p>

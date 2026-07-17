@@ -335,9 +335,10 @@ function VideoSubpageInner() {
           </FadeInCard>
 
           <FadeInCard className="flex-1 liquid-glass rounded-2xl p-4 overflow-auto" delay={0.3}>
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-bold text-heading">评论 (<AnimatedNumber value={comments.length}>{comments.length}</AnimatedNumber>)</h3>
+            <div className="flex items-center justify-between mb-4 min-w-0">
+              <h3 className="font-bold text-heading truncate">评论 (<AnimatedNumber value={comments.length}>{comments.length}</AnimatedNumber>)</h3>
               <PillTabBar
+                className="w-auto shrink-0"
                 tabs={[
                   { id: 'hot', label: '按热度排序' },
                   { id: 'time', label: '按时间排序' }

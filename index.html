@@ -4,10 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aurorάqua UI</title>
+    <title>Aurorαqua UI</title>
   </head>
   <body>
     <div id="root"></div>
+    <style>
+      html, body, #root {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar,
+      #root::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

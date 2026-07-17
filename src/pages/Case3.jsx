@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { Search, Home, Settings, Info } from 'lucide-react';
+import { Home, Settings, Info } from 'lucide-react';
 import UserAvatar from '../components/ui/UserAvatar';
 import { useBackground } from '../context/BackgroundContext';
 import Case3Sidebar, { sidebarItems } from '../components/case3/Case3Sidebar';
+import SearchInput from '../components/case3/SearchInput';
 import DashboardSubpage from '../components/case3/subpages/DashboardSubpage';
 import ManagementSubpage from '../components/case3/subpages/ManagementSubpage';
 import ChatSubpage from '../components/case3/subpages/ChatSubpage';
@@ -14,6 +15,11 @@ import VideoSubpage from '../components/case3/subpages/VideoSubpage';
 import SocialSubpage from '../components/case3/subpages/SocialSubpage';
 import ForumSubpage from '../components/case3/subpages/ForumSubpage';
 import MusicSubpage from '../components/case3/subpages/MusicSubpage';
+import PrtsSubpage from '../components/case3/subpages/PrtsSubpage';
+import MacOSSubpage from '../components/case3/subpages/MacOSSubpage';
+import LucideExposeSubpage from '../components/case3/subpages/LucideExposeSubpage';
+import ConfettiBoothSubpage from '../components/case3/subpages/ConfettiBoothSubpage';
+import BadgeSubpage from '../components/case3/subpages/badge/BadgeSubpage';
 
 function Case3() {
   const location = useLocation();
@@ -88,6 +94,16 @@ function Case3() {
         return <ForumSubpage />;
       case 'music':
         return <MusicSubpage />;
+      case 'prts':
+        return <PrtsSubpage />;
+      case 'macos':
+        return <MacOSSubpage />;
+      case 'lucide':
+        return <LucideExposeSubpage />;
+      case 'confetti':
+        return <ConfettiBoothSubpage />;
+      case 'badge':
+        return <BadgeSubpage />;
       default:
         return <DashboardSubpage />;
     }
@@ -135,17 +151,13 @@ function Case3() {
       >
         <header className={`fixed top-0 right-0 h-16 z-40 px-6 flex items-center justify-end transition-all duration-300 ${sidebarOpen ? 'left-[304px]' : 'left-16'}`}>
           <div className="flex items-center gap-3">
-            <div className="relative">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleSearch(e)}
-                placeholder=""
-                className="input-glass pl-9 pr-4 py-2.5 text-sm w-64"
-              />
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
-            </div>
+            <SearchInput
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && handleSearch(e)}
+              placeholder=""
+              width="w-64"
+            />
             <Link to="/settings" className="glass-button text-sm flex items-center gap-2 hover:text-pink-700">
               <Settings className="w-4 h-4" />
               <span>设置</span>

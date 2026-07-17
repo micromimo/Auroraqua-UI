@@ -30,20 +30,20 @@ export const favoriteFolders = [
 
 export const relatedVideos = [
   { id: 1, title: '沉沦者的黑流树海 | 明日方舟', duration: '4:18', views: '89.2K', thumbnail: '🎮' },
-  { id: 2, title: '「GTAOL」如何解锁隐藏骇客', duration: '8:35', views: '45.6K', thumbnail: '🕶️' },
+  { id: 2, title: '夏末RacingXM｜ViceCity娱乐流程实况', duration: '8:35', views: '45.6K', thumbnail: '🕶️' },
   { id: 3, title: '【ASMR┊KU100】啊ー姆…っ♡', duration: '23:42', views: '128.3K', thumbnail: '🎧' },
-  { id: 4, title: '请问您今天要来点兔子吗？《ときめきポポロン♪》', duration: '1:38', views: '78.2K', thumbnail: '🐰' },
+  { id: 4, title: '每日亲亲洛丽塔——夜羊社作品赏析', duration: '1:38', views: '78.2K', thumbnail: '🐑' },
   { id: 5, title: '秦晖-秦制、小共同体、共同的底线｜MHYYYY', duration: '1:23:45', views: '198.5K', thumbnail: '📖' },
   { id: 6, title: '铃兰节拍器', duration: '3:28', views: '15.7K', thumbnail: '🌸' },
   { id: 7, title: '谁是抽象界的天赋型选手？｜小约翰可汗', duration: '18:56', views: '256.8K', thumbnail: '🎙️' },
   { id: 8, title: 'Hyprland配置全流程', duration: '25:12', views: '32.4K', thumbnail: '🖥️' },
   { id: 9, title: '打造自己的ArchLinux', duration: '45:30', views: '56.9K', thumbnail: '🐧' },
   { id: 10, title: 'めめしぃ / すりぃ feat.可不', duration: '4:32', views: '12.5K', thumbnail: '🎵' },
-  { id: 11, title: 'Rust进阶教程', duration: '5:23', views: '8.3K', thumbnail: '🎨' },
+  { id: 11, title: '「GTAOL」如何解锁隐藏骇客', duration: '5:23', views: '8.3K', thumbnail: '🎨' },
   { id: 12, title: 'WWDC 2026', duration: '12:45', views: '6.7K', thumbnail: '🤯' },
   { id: 13, title: 'MacOS使用手册', duration: '8:12', views: '4.2K', thumbnail: '🍎' },
-  { id: 14, title: '组件库使用指南', duration: '15:30', views: '3.8K', thumbnail: '📚' },
-  { id: 15, title: '动画效果详解', duration: '9:28', views: '2.9K', thumbnail: '✨' },
+  { id: 14, title: '第二共和国的褪色与枯萎', duration: '15:30', views: '3.8K', thumbnail: '🥀' },
+  { id: 15, title: 'Rust进阶教程', duration: '9:28', views: '2.9K', thumbnail: '✨' },
 ];
 
 export const liveChatConfig = {

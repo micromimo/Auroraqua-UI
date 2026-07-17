@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Hash, Volume2, Users, Plus, Search } from 'lucide-react';
+import { Hash, Volume2, Users, Plus } from 'lucide-react';
 import PillTabNude from '../ui/PillTabNude';
+import SearchInput from './SearchInput';
 
 const getRandomColor = (name) => {
   const colors = [
@@ -73,16 +74,12 @@ export default function ChatSidebar({
         {/* Header */}
         <div className="p-3 border-b border-white/20 shrink-0">
           <div className="flex items-center gap-2 mb-3">
-            <div className="flex-1 relative">
-              <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder=""
-                className="w-full input-glass pl-8 pr-3 py-1.5 text-xs rounded-lg"
-              />
-            </div>
+            <SearchInput
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              size="sm"
+              className="flex-1 rounded-lg"
+            />
           </div>
 
           {/* View Toggle */}

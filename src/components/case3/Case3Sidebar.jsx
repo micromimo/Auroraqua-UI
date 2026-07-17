@@ -1,18 +1,23 @@
 import { Link } from 'react-router-dom';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, Command, Airplay } from 'lucide-react';
 import { motion } from 'framer-motion';
 import NavBar from './NavBar';
 
 const sidebarItems = [
-  { id: 'dashboard', label: 'Admin Dashboard', icon: 'LayoutDashboard', path: '/case3/dashboard' },
+  { id: 'dashboard', label: 'Admin Dashboard', icon: 'Command', path: '/case3/dashboard' },
   { id: 'video', label: 'MeTube', icon: 'PlayCircle', path: '/case3/video' },
   { id: 'social', label: 'Prysm™ Social ', icon: 'Users', path: '/case3/social/main' },
-  { id: 'chat', label: 'Chat', icon: 'MessageSquare', path: '/case3/chat' },
+  { id: 'chat', label: 'Messenger', icon: 'MessageSquare', path: '/case3/chat' },
   { id: 'music', label: 'Music', icon: 'Music', path: '/case3/music' },
   { id: 'mindmap', label: 'Mermaid Flowchart&Diagrams', icon: 'GitBranch', path: '/case3/mindmap' },
   { id: 'markdown', label: 'Markdown', icon: 'FileText', path: '/case3/markdown' },
-  { id: 'management', label: 'Management', icon: 'Database', path: '/case3/management' },
+  { id: 'prts', label: 'PRTS', icon: 'Diamond', path: '/case3/prts' },
+  { id: 'macos', label: 'MacOS', icon: 'Airplay', path: '/case3/macos' },
   { id: 'forum', label: 'Forum', icon: 'MessageCircle', path: '/case3/forum' },
+  { id: 'lucide', label: 'Lucide Exposé', icon: 'Sparkles', path: '/case3/lucide' },
+  { id: 'management', label: 'Management', icon: 'Database', path: '/case3/management' },
+  { id: 'confetti', label: 'Confetti Booth', icon: 'PartyPopper', path: '/case3/confetti' },
+  { id: 'badge', label: 'Badge Inspect', icon: 'BadgeCheck', path: '/case3/badge' },
 ];
 
 const iconMap = {
@@ -23,6 +28,9 @@ const iconMap = {
       <rect x="14" y="14" width="7" height="7" />
       <rect x="3" y="14" width="7" height="7" />
     </svg>
+  ),
+  Command: ({ className }) => (
+    <Command className={className} />
   ),
   PlayCircle: ({ className }) => (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -79,6 +87,60 @@ const iconMap = {
       <circle cx="18" cy="16" r="3" />
     </svg>
   ),
+  HardDrive: ({ className }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <line x1="22" y1="12" x2="2" y2="12" />
+      <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
+      <line x1="6" y1="16" x2="6.01" y2="16" />
+      <line x1="10" y1="16" x2="10.01" y2="16" />
+    </svg>
+  ),
+  Diamond: ({ className }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2.7 10.3a2.41 2.41 0 0 0 0 3.41l7.59 7.59a2.41 2.41 0 0 0 3.41 0l7.59-7.59a2.41 2.41 0 0 0 0-3.41l-7.59-7.59a2.41 2.41 0 0 0-3.41 0Z" />
+    </svg>
+  ),
+  Monitor: ({ className }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+      <line x1="8" y1="21" x2="16" y2="21" />
+      <line x1="12" y1="17" x2="12" y2="21" />
+    </svg>
+  ),
+  Airplay: ({ className }) => (
+    <Airplay className={className} />
+  ),
+  Sparkles: ({ className }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+      <path d="M5 3v4" />
+      <path d="M19 17v4" />
+      <path d="M3 5h4" />
+      <path d="M17 19h4" />
+    </svg>
+  ),
+  PartyPopper: ({ className }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5.8 11.3 2 22l10.7-3.79" />
+      <path d="M4 3h.01" />
+      <path d="M22 8h.01" />
+      <path d="M15 2h.01" />
+      <path d="M22 20h.01" />
+      <path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44a6 6 0 0 0 .37 2.64c.23.72.85 1.26 1.59 1.26h.38c.86 0 1.6-.6 1.76-1.44a2.9 2.9 0 0 0 .03-1.3" />
+      <path d="m22 13-2.24.75a2.9 2.9 0 0 1-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44a6 6 0 0 1 .37 2.64c.23.72.85 1.26 1.59 1.26h.38c.86 0 1.6-.6 1.76-1.44a2.9 2.9 0 0 1 .03-1.3" />
+      <path d="M16 16h.01" />
+      <path d="M8 16h.01" />
+      <path d="M12 20h.01" />
+      <path d="M17 18h.01" />
+      <path d="M7 18h.01" />
+    </svg>
+  ),
+  BadgeCheck: ({ className }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
+  ),
 };
 
 export { sidebarItems };
@@ -109,7 +171,7 @@ export default function Case3Sidebar({
               <img src="/favicon.ico" alt="Logo" className="w-full h-full object-contain" />
             </div>
             <div>
-              <h2 className="text-sm font-bold gradient-text">Aurorάqua UI</h2>
+              <h2 className="text-sm font-bold gradient-text">Aurorαqua UI</h2>
               <p className="text-[10px] text-muted">Case3</p>
             </div>
           </div>
@@ -122,7 +184,7 @@ export default function Case3Sidebar({
           </button>
         </div>
 
-        <nav className="flex-1 space-y-1">
+        <nav className="flex-1 space-y-1 overflow-y-auto p-1">
           {sidebarItems.map((item, index) => {
             const Icon = iconMap[item.icon];
             const active = isActive(item.id);
@@ -146,7 +208,7 @@ export default function Case3Sidebar({
                   }`}
                   style={active ? {
                     background: 'linear-gradient(135deg, rgba(255, 211, 219, 0.8), rgba(255, 211, 219, 0.4))',
-                    boxShadow: '0 0 20px rgba(244, 114, 182, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.6)'
+                    boxShadow: '0 0 8px rgba(244, 114, 182, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.6)'
                   } : { color: 'var(--text-body)' }}
                 >
                   {active && (
@@ -165,7 +227,7 @@ export default function Case3Sidebar({
         <div className="mt-4 pt-4 border-t border-white/20">
           <div className="flex items-center gap-2 text-xs text-muted mb-2">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span>9 个展示页面</span>
+            <span>{sidebarItems.length} 个展示页面</span>
           </div>
         </div>
         </motion.div>

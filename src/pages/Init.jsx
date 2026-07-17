@@ -28,7 +28,7 @@ export default function Init() {
         <div className="text-center mb-8">
           <img src="/favicon.ico" className="w-20 h-20 mb-4 mx-auto block" alt="logo" />
           <h1 className="text-3xl font-bold neon-text-pink tracking-wide">
-            AurorάquaUI
+            AurorαquaUI
           </h1>
         </div>
 
@@ -42,7 +42,7 @@ export default function Init() {
               </a>
             </div>
             <p className="text-sm text-body leading-relaxed">
-              「Aurorάqua」是受 Apple LiquidGlass 設計風格和冰島極光啟發的 Web UI 模板，採用「玻璃擬態」設計與柔和的極光漸變效果。基於 React 和 Tailwind 構建。
+              「Aurorαqua」是受 Apple LiquidGlass 設計風格和冰島極光啟發的 Web UI 模板，採用「玻璃擬態」設計與柔和的極光漸變效果。基於 React 和 Tailwind 構建。
               ⚠️目前僅供個人UI喜好展示，大部分功能仍未開發，仍很不完善。
             </p>
           </div>
@@ -83,7 +83,7 @@ export default function Init() {
           </div>
         </div>
 
-        <div className="text-center mb-6"a>
+        <div className="text-center mb-6">
           <p className="text-sm text-secondary tracking-wider">
             Select a Case to Start
           </p>

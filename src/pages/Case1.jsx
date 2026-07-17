@@ -99,7 +99,7 @@ export default function Case1() {
                 <img src="/favicon.ico" alt="Logo" className="w-full h-full object-contain" />
               </div>
               <div>
-                <h1 className="text-lg font-semibold gradient-text">Aurorάqua UI</h1>
+                <h1 className="text-lg font-semibold gradient-text">Aurorαqua UI</h1>
                 <p className="text-xs text-muted">Powered by React</p>
               </div>
               <div className="h-6 w-px bg-gray-300/50" />
